@@ -72,7 +72,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="fh5co-navbar-brand">
-                            <a class="fh5co-logo" href="index.html"><img src="images/7.png" alt="team iris" class="navLogo"></a>
+                            <a class="fh5co-logo" href="index.html"><img class="navLogo" src="images/7.png" alt="team iris"></a>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -80,7 +80,7 @@
                             <li><a href="index.html"><span>RISK</span></a></li>
                             <li><a href="background.html">BACKGROUND</a></li>
                             <li><a href="prep.html">PREPARE</a></li>
-                            <li class="active"><a href="subscribe.html">SUBSCRIBE</a></li>
+                            <li><a href="subscribe.html">SUBSCRIBE</a></li>
                             <li><a href="Aboutus.html">ABOUT US</a></li>
                         </ul>
                     </div>
@@ -89,42 +89,19 @@
         </div>
     </header>
     <!-- END: header -->
+    <section id="intro">
         <div class="container">
-            <div id="subHead" class="contentTitle">Sign-up to receive a risk alert</div></p>
 
-            <div class="col-md-10 col-md-offset-1 animate-box">
-                <form onsubmit="return false">
-                    <div class="row">
-                        <div class="col-md-6 field eleMargin">
-                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Your mobile number" required pattern="^04[0-9]{8}$">
-                        </div>
-                    </div>
+            <div id="subCHead" class="contentTitle">Sign-up to receive a risk alert</div>
 
-                    Receive an SMS alert if the risk level changes to High or Extreme:
+            <div id="subStatus" class="statusBar">Subscription confirmed!</div>
 
-                    <div class="form-group row">
-                        <div class="col-md-5 field checkboxBG">
-                            <input type="checkbox" name="service" id="daily" value="morningCheck">
-                            <label for="daily">At your location.</label>
-                            <div id="pcBox" class="pcArea">
-                                <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Please enter a postcode">
-                            </div>
-                    </div>
-                        <div class="col-md-5 field checkboxBG">
-                            <input type="checkbox" name="service" id="area" value="areaCheck">
-                            <label for="area">Across any location/s in the Greater Melbourne region.</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-6 field">
-                            <input type="submit" id="submit" class="btn btn-primary eleMargin" value="Subscribe" onclick="insertData()">
-                        </div>
-                    </div>
-                </form>
-                To update your preference, please <a style="color: red; text-decoration: none" href="update.html">click here</a>
-            </div>
+            <p>
+                Thank you, you have been successfully subscribed with us!
+            </p>
         </div>
+    </section>
+    </section>
 
 
     <footer id="footer" role="contentinfo">
@@ -153,8 +130,6 @@
 
 <!-- Main JS (Do not remove) -->
 <script src="js/main.js"></script>
-
-<script src="js/subPageLogic.js"></script>
 
 </body>
 </html>

@@ -64,15 +64,15 @@
 <body>
 <div class="box-wrap">
     <header role="banner" id="fh5co-header">
+        <div class="row headerBanner">
+            ARE YOU THUNDERSTORM ASTHMA READY? <a class="headerBanner bannerLink" href="prep.html">PREPARE & BE READY</a>
+        </div>
         <div class="container">
-            <div class="row headerBanner">
-                ARE YOU THUNDERSTORM ASTHMA READY? <a class="headerBanner bannerLink" href="prep.html">PREPARE & BE READY</a>
-            </div>
             <nav class="navbar navbar-default">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="fh5co-navbar-brand">
-                            <a class="fh5co-logo" href="index.html"><img src="images/7.png" alt="team iris"></a>
+                            <a class="fh5co-logo" href="index.html"><img class="navLogo" src="images/7.png" alt="team iris" ></a>
                         </div>
                     </div>
                     <div class="col-md-9">
@@ -89,51 +89,50 @@
         </div>
     </header>
     <!-- END: header -->
-    <main id="main">
-        <div class="container">
-            <div class="col-md-8 col-md-offset-2 animate-box">
-                <form onsubmit="return false">
-                    <div class="form-group row">
-                        <div class="col-md-12 field">
-                            <input type="text" name="uPhone" id="uPhone" class="form-control" placeholder="Your mobile number" required pattern="^04[0-9]{8}$">
-                        </div>
-                    </div>
-                    <div class="form-group checkbox">
-                        <div class="col-md-6">
-                            <input type="checkbox" name="upService" id="uDaily" value="uMC">
-                            <label for="uDaily"> Receive an SMS alert if the risk level changes to High or Extreme in a location of your choice.</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="checkbox" name="upService" id="uArea" value="uAC">
-                            <label for="uArea">Receive an SMS aler if the risk level changes to High or Extreme in a any location/s in the Greater Melbourne region.</label>
-                        </div>
-                    </div>
+    <div class="container">
+        <div id="upHead" class="contentTitle">Update your preferences</div></p>
 
-                    <div class="form-group row">
-                        <div id="uPcBox" class="col-md-4 field">
-                            <input type="text" name="uPC" id="uPostcode" class="form-control" placeholder="Please enter your postcode">
-                        </div>
+        <div class="col-md-10 col-md-offset-1 animate-box">
+            <form onsubmit="return false">
+                <div class="row">
+                    <div class="col-md-6 field eleMargin">
+                        <input type="text" name="uPhone" id="uPhone" class="form-control" placeholder="Your mobile number" required pattern="^04[0-9]{8}$">
                     </div>
+                </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-4 field">
-                            <input type="submit" id="update" class="btn btn-primary" value="Update" onclick="updatePreference()">
+                Receive an SMS alert if the risk level changes to High or Extreme:
+
+                <div class="form-group row">
+                    <div class="col-md-5 field checkboxBG">
+                        <input type="checkbox" name="upService" id="uDaily" value="uMC">
+                        <label for="uDaily">At your location.</label>
+                        <div id="uPcBox" class="pcArea">
+                            <input type="text" name="uPC" id="uPostcode" class="form-control" placeholder="Please enter a postcode">
                         </div>
                     </div>
-                </form>
-                If you don't make any selection, you will be automatically unsubscribed.
-            </div>
-            <!-- <div class="col-md-4"></div> -->
+                    <div class="col-md-5 field checkboxBG">
+                        <input type="checkbox" name="upService" id="uArea" value="uAC">
+                        <label for="uArea">Across any location/s in the Greater Melbourne region. </label>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6 field">
+                        <input type="submit" id="update" class="btn btn-primary eleMargin" value="update" onclick="updatePreference()">
+                    </div>
+                </div>
+            </form>
+            To unsubscribe, please <a href="unsub.html" style="text-decoration: none">click here</a>
         </div>
-    </main>
-
+    </div>
 
     <footer id="footer" role="contentinfo">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center">
+                <div class="col-md-12 text-center ">
                     <div class="footer-widget border">
-                        <p class="pull-left"><small>&copy; IRIS TEAM</small></p>
+                        <p class="pull-left footerColor"><small>&copy; IRIS TEAM</small></p>
+                        <p class="pull-right footerColor"><a href="ack.html"><small>Acknowledgement & Disclaimer</small></a></p>
                     </div>
                 </div>
             </div>
@@ -154,7 +153,7 @@
 <!-- Main JS (Do not remove) -->
 <script src="js/main.js"></script>
 
-<script src="js/unsubLogic.js"></script>
+<script src="js/updateLogic.js"></script>
 
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -7,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TAsthma-Thunderstorm Asthma hotspots</title>
+    <title>TAsthma-thunderstorm asthma hotspots</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -62,7 +61,7 @@
 
 </head>
 <body>
-<div class="box-wrap">
+<div class="box-wrap" id="heatMap">
     <header role="banner" id="fh5co-header">
         <div class="row headerBanner">
             ARE YOU THUNDERSTORM ASTHMA READY? <a class="headerBanner bannerLink" href="prep.html">PREPARE & BE READY</a>
@@ -80,7 +79,7 @@
                             <li><a href="index.html"><span>RISK</span></a></li>
                             <li><a href="background.html">BACKGROUND</a></li>
                             <li><a href="prep.html">PREPARE</a></li>
-                            <li class="active"><a href="subscribe.html">SUBSCRIBE</a></li>
+                            <li><a href="subscribe.html">SUBSCRIBE</a></li>
                             <li><a href="Aboutus.html">ABOUT US</a></li>
                         </ul>
                     </div>
@@ -88,45 +87,34 @@
             </nav>
         </div>
     </header>
-    <!-- END: header -->
+
+    <section id="work">
         <div class="container">
-            <div id="subHead" class="contentTitle">Sign-up to receive a risk alert</div></p>
 
-            <div class="col-md-10 col-md-offset-1 animate-box">
-                <form onsubmit="return false">
-                    <div class="row">
-                        <div class="col-md-6 field eleMargin">
-                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Your mobile number" required pattern="^04[0-9]{8}$">
-                        </div>
-                    </div>
+            <div id="ackHead" class="contentTitle">Acknowledgement and Disclaimer</div>
+            <h2 style="margin-top: 50px">
+                Acknowledgement
+            </h2>
+            <p>
+            We have used information from the following resources, accredited by the State Government of Victoria:
+            </p>
+            <ul>
+                <li><p>Asthma Foundation NSW</p></li>
+                <li><p>Australasian Society of Clinical Immunology and Allergy (ASCIA)</p></li>
+                <li><p>Better Health Channel</p></li>
+            </ul>
 
-                    Receive an SMS alert if the risk level changes to High or Extreme:
+            <h2 style="margin-top: 50px">
+                Disclaimer
+            </h2>
+            <p>Our recommendations are based on expert opinion and the available published literature at the time of review.</p>
+            <p>Information presented on this website is not intended to substitute medical opinions.  Any queries concerning a medical opinion or treatment should be directed to a General Practitioner.</p>
+            <p>This website is not funded by any commercial sources, neither is it regulated by commercial organisations.</p>
+            <p>Our data is sourced from third parties. We rely on such third parties to ensure the data is accurate and complete.</p>
 
-                    <div class="form-group row">
-                        <div class="col-md-5 field checkboxBG">
-                            <input type="checkbox" name="service" id="daily" value="morningCheck">
-                            <label for="daily">At your location.</label>
-                            <div id="pcBox" class="pcArea">
-                                <input type="text" name="postcode" id="postcode" class="form-control" placeholder="Please enter a postcode">
-                            </div>
-                    </div>
-                        <div class="col-md-5 field checkboxBG">
-                            <input type="checkbox" name="service" id="area" value="areaCheck">
-                            <label for="area">Across any location/s in the Greater Melbourne region.</label>
-                        </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-6 field">
-                            <input type="submit" id="submit" class="btn btn-primary eleMargin" value="Subscribe" onclick="insertData()">
-                        </div>
-                    </div>
-                </form>
-                To update your preference, please <a style="color: red; text-decoration: none" href="update.html">click here</a>
-            </div>
         </div>
-
-
+    </section>
     <footer id="footer" role="contentinfo">
         <div class="container">
             <div class="row">
@@ -154,7 +142,9 @@
 <!-- Main JS (Do not remove) -->
 <script src="js/main.js"></script>
 
-<script src="js/subPageLogic.js"></script>
+<script type="text/javascript" src="js/backgroundPage.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFZ97_ioIOkM9afRcHDrHh_zMPFwvpyJY&libraries=visualization&callback=init">
+</script>
 
 </body>
 </html>
