@@ -3,12 +3,19 @@
  * Created by Jeremy
  * Date: 31/8/17
  * Time: 6:22 PM
+ *
+ * request EPA pm10 data and process it
+ *
+ * return formated response to website
  */
+
+//get current time in AUS timezone
 function getTime() {
     date_default_timezone_set('Australia/Melbourne');
     return date('YmdH');
 }
 
+//get response from a API call
 function getAPIResponse($date) {
     $url = 'http://sciwebsvc.epa.vic.gov.au/aqapi/SitesHourlyAirQuality?datetimestart=' . $date;
     $curl = curl_init();
@@ -19,6 +26,7 @@ function getAPIResponse($date) {
     return $res;
 }
 
+//retrive pm10 info with site location from the response, and encode it as a json string
 function processResponse($response) {
     $result = array();
     $json = json_decode($response);
@@ -36,5 +44,5 @@ function processResponse($response) {
     return json_encode($result);
 }
 
-echo processResponse(getAPIResponse(getTime()));
+echo processResponse(getAPIResponse(getTime())); //pass back the response
 

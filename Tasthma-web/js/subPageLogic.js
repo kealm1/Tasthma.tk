@@ -1,8 +1,17 @@
-var postcode = document.getElementById("postcode");
-var phoneNumber = document.getElementById("phone");
-var postcodeArea = document.getElementById('pcBox');
+/*
+* This script mainly control the subcription logic, both showing the postcode box dynamically.
+* As well as client-side validation and customized error message
+* validation logic includes phone number cannot be empty and must be valid aus phone, and postcode is required
+* to be valid if user selected service 1. for service 2, the postcode is optional.
+*
+* once the client-side validation, it will forward the data to server script for processing.
+*
+* */
+var postcode = document.getElementById("postcode"); //postcode box
+var phoneNumber = document.getElementById("phone"); //phone number area
+var postcodeArea = document.getElementById('pcBox'); //div for postcode box
 
-var services = {morningCheck:false, areaCheck:false};
+var services = {morningCheck:false, areaCheck:false}; //to store user preference
 
 var greaterMelb = [3000, 3002, 3003, 3004, 3005, 3006, 3008, 3010, 3011, 3012, 3013, 3015, 3016, 3018, 3019,
     3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027, 3028, 3029, 3030, 3031, 3032, 3033, 3034, 3036, 3037, 3038,
@@ -14,19 +23,19 @@ var greaterMelb = [3000, 3002, 3003, 3004, 3005, 3006, 3008, 3010, 3011, 3012, 3
     3141, 3142, 3143, 3144, 3145, 3146, 3147, 3148, 3149, 3150, 3151, 3152, 3153, 3154, 3155, 3156, 3158, 3159,
     3160, 3161, 3162, 3163, 3165, 3166, 3167, 3168, 3169, 3170, 3171, 3172, 3173, 3174, 3175, 3177, 3178, 3179,
     3180, 3181, 3182, 3183, 3184, 3185, 3186, 3187, 3188, 3189, 3190, 3191, 3192, 3193, 3194, 3195, 3196, 3197,
-    3198, 3199, 3200, 3201, 3202, 3204, 3205, 3206, 3207, 3800];
+    3198, 3199, 3200, 3201, 3202, 3204, 3205, 3206, 3207, 3800]; //postcodes for all greater mel
 
 
-postcodeArea.style.visibility = 'hidden';
+postcodeArea.style.visibility = 'hidden'; //hide the postcode first
 
-$('input[name=service]').change(function(){
+$('input[name=service]').change(function(){ //record user's preference and show the postcode area accordingly
     var val = $(this).val();
-    if($(this).is(':checked')) {
-        services[val] = true;
+    if($(this).is(':checked')) { //checkbox is ticked
+        services[val] = true; //store user preference
         if( val == 'morningCheck') {
-            postcodeArea.style.visibility = 'visible';
+            postcodeArea.style.visibility = 'visible'; //if service 1 is ticked, show the postcode area
         }
-    } else {
+    } else { //checkbox is unticked
         services[val] = false;
         if(val == 'morningCheck') {
             postcodeArea.style.visibility = 'hidden';
@@ -34,40 +43,40 @@ $('input[name=service]').change(function(){
     }
 });
 
-postcode.addEventListener("input", function (event) {
+postcode.addEventListener("input", function (event) { //postcode validation
     if (!isValidPostcode(postcode.value)) {
         postcode.valid = false;
-        postcode.setCustomValidity("Oops! Please type in a valid postcode");
+        postcode.setCustomValidity("Oops! Please enter a valid postcode within Greater Melbourne.");
     } else {
         postcode.setCustomValidity("");
         postcode.valid = true;
     }
 });
 
-phoneNumber.addEventListener("input", function (event) {
+phoneNumber.addEventListener("input", function (event) { //validation for phone number using regex
     if (phoneNumber.validity.patternMismatch) {
-        phoneNumber.setCustomValidity("Oops! Please type in a valid Oz mobile number (04xxxxxxxx).");
+        phoneNumber.setCustomValidity("Oops! Please enter a valid Australian mobile number (04xxxxxxxx).");
     } else {
         phoneNumber.setCustomValidity("");
         phoneNumber.valid = true;
     }
 });
 
-function isValidPostcode(postcode) {
+function isValidPostcode(postcode) { //checking if it's a valid postcode in greater melb
     return greaterMelb.indexOf(parseInt(postcode)) >= 0;
 }
 
-function insertData() {
+function insertData() { //pass data to server-side script for processing, if all validation passed
     if(postcodeArea.style.visibility == 'visible') {
         if(postcode.value.trim().length == 0) {
             postcode.valid == false;
-            postcode.setCustomValidity("Oops! Please type in postcode in greater Melb");
+            postcode.setCustomValidity("Oops! Please enter a valid postcode within Greater Melbourne.");
         }
     } else {
         postcode.valid = true;
     }
     if (!services['morningCheck'] && !services['areaCheck']) {
-        alert('Please select at least one service!');
+        alert('Oops! Please select at least one service.');
         return;
     }
     if (postcode.valid && phoneNumber.valid) {
@@ -76,23 +85,24 @@ function insertData() {
         if (subType != 2) {
             pCode = postcode.value;
         }
-        $.ajax({
+        $.ajax({ //ajax call to post data, server-side php script will validate again and store data if valid
             url: 'scripts/dbController.php',
             type: 'POST',
             dataType: 'json',
             data: {function: 'insert', postcode: pCode, phoneNumber: phoneNumber.value, serviceType: subType}
         }).done(function (res) {
-            alert((res.msg));
             if (res.code != 0) {
-                window.location.href='index.html'
+                window.location.href='subConfirm.html'
+            } else {
+                alert((res.msg));
             };
         }).fail(function () {
-            alert('add data failed');
+            alert('Oops! Something went wrong when storing your data. Please try again.');
         });
     }
 }
 
-function getServicesType() {
+function getServicesType() { //acting as a prototol between server and client, so service-side can act different based on this code
     if(services.morningCheck && services.areaCheck) {
         return 3;
     } else if(services.areaCheck) {

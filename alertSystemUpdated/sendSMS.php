@@ -6,11 +6,11 @@
  * Time: 10:30 PM
  */
 function sendSMS($to,$msg) {
-    $username = 'tasthma';
-    $password = 'tasthmairis';
+    $username = 'tasthma'; //swap with your own username
+    $password = 'tasthmairis'; //swap with your own password
     $destination = $to; //Multiple numbers can be entered, separated by a comma
     $source    = 'Tasthma';
-    $text = $msg . " go to https://tasthma.tk";
+    $text = $msg . " Unsub: https://tasthma.tk/unsub.html";
     $ref = 'iris';
 
     $content =  'username='.rawurlencode($username).

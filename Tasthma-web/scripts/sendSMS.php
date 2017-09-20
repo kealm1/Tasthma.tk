@@ -4,13 +4,16 @@
  * User: Jean-cauce
  * Date: 13/9/17
  * Time: 10:30 PM
+ *
+ * Send sms message, other script can call send SMS msg to send txt by only providing msg body and number
+ * (can be a list, separated by comma)
  */
 function sendSMS($to,$msg) {
-    $username = 'tasthma';
-    $password = 'tasthmairis';
-    $destination = $to; //Multiple numbers can be entered, separated by a comma
-    $source    = 'Tasthma';
-    $text = $msg . " https://tasthma.tk/update.html";
+    $username = 'tasthma'; //service provider account change your own account username
+    $password = 'tasthmairis'; //change to your own account password
+    $destination = $to; //Multiple numbers can be entered, separated by comma
+    $source    = 'Tasthma'; //sender
+    $text = $msg;
     $ref = 'iris';
 
     $content =  'username='.rawurlencode($username).
@@ -18,9 +21,9 @@ function sendSMS($to,$msg) {
         '&to='.rawurlencode($destination).
         '&from='.rawurlencode($source).
         '&message='.rawurlencode($text).
-        '&ref='.rawurlencode($ref);
+        '&ref='.rawurlencode($ref); //construct url body
 
-    $ch = curl_init('https://api.smsbroadcast.com.au/api-adv.php');
+    $ch = curl_init('https://api.smsbroadcast.com.au/api-adv.php'); //curl request to send msg
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $content);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

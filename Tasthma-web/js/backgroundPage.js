@@ -1,7 +1,7 @@
 /*
 V1.0
 
-display the heat map logic
+display the heat map on the background page
  */
 
 var heatMap;
