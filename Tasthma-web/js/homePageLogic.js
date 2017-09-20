@@ -1,7 +1,7 @@
 /*
-V3.0
+V4.0
 Author: team IRIS
-Date: 05/09/17
+Date: 20/09/17
 
 V1.1
 * Add if condition to prevent accuweather api ran out of call and destroy all weather info display
@@ -61,14 +61,16 @@ V1.1
         -optimization (remove non-async call)
 
   v3.0 refined algorithm, season factor
+
+  v4.0 algorithm refined
 * */
 
 //reference the customized icon location
 var mapMarkers = {
-    'LOW': 'https://image.ibb.co/msomxQ/l.png',
-    'MEDIUM': 'https://image.ibb.co/mQ1Lrk/m.png',
-    'HIGH': 'https://image.ibb.co/mOhRWk/h.png',
-    'EXTREME': 'https://image.ibb.co/k6h4HQ/e.png'
+    'LOW': 'https://image.ibb.co/b6Kz9Q/l.png',
+    'MEDIUM': 'https://image.ibb.co/eoavik/m.png',
+    'HIGH': 'https://image.ibb.co/jeFvik/h.png',
+    'EXTREME': 'https://image.ibb.co/dcNxw5/e.png'
 };
 
 var geoJSON = {
@@ -218,7 +220,7 @@ function initialize() {
         } else { //get risk info and display to website
             locationInfoByCoords(placeSearched.geometry.location.lat(), placeSearched.geometry.location.lng());
         }
-    })
+    });
 
 //request pm10 data and store it
     $.ajax({
@@ -335,7 +337,7 @@ function manualLookUp() {
         alert('Oops! please type in your address, or postcode, or places')
     } else {
         var req = {
-            bounds: searchBound,
+           bounds: searchBound,
             query: text
         }
         searchService.textSearch(req, callback);
@@ -365,7 +367,6 @@ function processPlaceObject(place) {
         getCurrentInfo(name,lat,lon);
     }
 }
-
 
 //find suburbs using google geocoding and process and display to get risk info
 function locationInfoByCoords(lat,lon) {
@@ -591,9 +592,9 @@ function degToRad(deg) {
 function getWindIndex(windSpeed) {
      if (windSpeed >= 90) {
          return 3;
-     } else if (windSpeed >= 65 && windSpeed < 90) {
+     } else if (windSpeed >= 60 && windSpeed < 90) {
          return 2;
-     } else if (windSpeed >= 45 && windSpeed < 65) {
+     } else if (windSpeed >= 30 && windSpeed < 60) {
          return 1;
      } else {
          return 0;
@@ -661,23 +662,23 @@ function getRiskRating(score) {
     if (score >= 8) {
         res['rating'] = 'EXTREME';
         res ['desc'] = 'You need to prepare for a potential Thunderstorm Asthma outbreak.';
-        res ['colour'] = '#ff0000';
+        res ['colour'] = '#ff3333';
     } else if (score >= 5 && score < 8) {
         res['rating'] = 'HIGH';
         res ['desc'] = 'You can chill at home.';
-        res['colour'] = '#ff9900'
+        res['colour'] = '#ff9933'
     } else if (score >= 3 && score < 5) {
         res['rating'] = 'MEDIUM';
         res ['desc'] = 'You can go outside but remember to take your pills.';
-        res['colour'] = '#ffff33'
+        res['colour'] = '#ffff66'
     } else if (score >= 0 && score < 3) {
         res['rating'] = 'LOW';
         res ['desc'] = 'You can go outside to get your tan.';
-        res['colour'] = '#00ff33'
+        res['colour'] = '#00cc66'
     } else {
         res['rating'] = 'Error';
         res ['desc'] = 'oops, nothing to show';
-        res['colour'] = '#ff0000'
+        res['colour'] = '#ff3333'
     }
     return res;
 }
@@ -709,12 +710,15 @@ function displayInfoInBox(name,score) {
     var date = newDate.getDate();
     var month = monthParam[newDate.getMonth()];
     var dateString = day + ', ' + date + ' ' + month;
-
-     var box = document.getElementById('infoBox');
-    box.style.backgroundColor = rating.colour;
+    var box = document.getElementById('infoBox');
+    box.style.border = '2px solid ' + rating.colour;
     document.getElementById('dateDiv').innerText = dateString;
     document.getElementById('regionDiv').innerText = name + ', VIC';
     document.getElementById('riskRate').innerText = rating.rating;
+
+    var circle = document.getElementById('riskDiv');
+    circle.style.border = '8px solid ' + rating.colour;
+
     document.getElementById('descDiv').innerText = rating.desc;
     box.style.visibility = 'visible';
 }
@@ -730,6 +734,7 @@ function setInfoWindowContent(city, degree, condition, score) {
                     "</div>";
      return content;
 }
+
 
 
 
