@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="tasthmausers@35.189.15.221">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="tasthmausers">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <table id="6" parent="2" name="areaSubList"/>
+    <table id="7" parent="2" name="dailySubList"/>
+    <table id="8" parent="2" name="suburbs"/>
+    <column id="9" parent="6" name="phoneNumber">
+      <Position>1</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="10" parent="6" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>phoneNumber</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="11" parent="7" name="postcode">
+      <Position>1</Position>
+      <DataType>smallint(6)|0</DataType>
+    </column>
+    <column id="12" parent="7" name="phoneNumber">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="13" parent="7" name="postcode">
+      <ColNames>postcode</ColNames>
+    </index>
+    <key id="14" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>phoneNumber</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="15" parent="7" name="dailySubList_ibfk_1">
+      <ColNames>postcode</ColNames>
+      <RefSchemaName>tasthmausers</RefSchemaName>
+      <RefTableName>suburbs</RefTableName>
+      <RefColNames>postcode</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="16" parent="8" name="postcode">
+      <Position>1</Position>
+      <DataType>smallint(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="8" name="suburbName">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="18" parent="8" name="lat">
+      <Position>3</Position>
+      <DataType>decimal(9,6)|0</DataType>
+    </column>
+    <column id="19" parent="8" name="lon">
+      <Position>4</Position>
+      <DataType>decimal(9,6)|0</DataType>
+    </column>
+    <key id="20" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>postcode</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
