@@ -35,19 +35,17 @@ for ($i = 0; $i < count($rawData); $i++) {
     } else { //calculate risk score and store result to result list
          $score = calculateScore($data['lat'],$data['lon'],$GLOBALS['pm10Measures']);
          $rating = getGeneralRating($score);
-         $processedList[$postcode] = array('suburb'=>$data['suburbName'], 'score'=>$score, 'rating'=>$rating, 'phoneNumbers'=>array($data['phoneNumber']));
+         $processedList[$postcode] = array('postcode'=>$data['postcode'], 'score'=>$score, 'rating'=>$rating, 'phoneNumbers'=>array($data['phoneNumber']));
      }
 }
 
 //process the result to send SMS accordingly, currently simply send to all users
 foreach ($processedList as $postcode => $value) {
-    $nums = $value['phoneNumbers'];
-    for ($i = 0; $i < count($nums); $i++) {
-        if ($value['score'] > 4) {
-            sendSMS($nums[$i], 'The score in ' . $value['suburb'] . ' is ' . $value['score'] . ', which is ' .
-                $value['rating'] . '.');
-        } else {
-            sendSMS($nums[$i],'Risk in ' . $value['suburb'] . ' is ' . $value['score'] . '. All good.');
+    $score = $value['score'];
+    if($score > 4) {
+        $nums = $value['phoneNumbers'];
+        for ($i = 0; $i < count($nums); $i++) {
+                sendSMS($nums[$i], 'Risk level for ' . $value['postcode'] . ' is ' . $value['rating'] . '. Please be cautious when planning your day.');
         }
     }
 }

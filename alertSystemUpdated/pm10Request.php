@@ -4,11 +4,14 @@
  * Date: 31/8/17
  * Time: 6:22 PM
  */
+
+//record current time
 function getTime() {
     date_default_timezone_set('Australia/Melbourne');
     return date('YmdH');
 }
 
+//curl call to get all measures
 function getAPIResponse($date) {
     $url = 'http://sciwebsvc.epa.vic.gov.au/aqapi/SitesHourlyAirQuality?datetimestart=' . $date;
     $curl = curl_init();
@@ -19,6 +22,7 @@ function getAPIResponse($date) {
     return $res;
 }
 
+//process to retrieve pm10 measure and site location from json format, and covert the responese into json response
 function processResponse($response) {
     $result = array();
     $json = json_decode($response);
@@ -35,4 +39,3 @@ function processResponse($response) {
     }
     return json_encode($result);
 }
-
