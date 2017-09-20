@@ -22,20 +22,6 @@ body {
   font-weight: 300;
 }
 
-/*a {
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-a:hover {
-  text-decoration: underline !important;
-  !*color: #52d3aa !important;*!
-  color: white !important;
-}
-a:focus, a:active {
-  outline: none;
-}*/
-
 p {
   margin-bottom: 1.5em;
   font-size: 15px;
@@ -275,10 +261,6 @@ h1, h2, h3, h4, h5, h6 {
 #product .post-entry .post > a img {
   max-width: 200px;
   max-height: 191px;
-  /*-webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;*/
 }
 @media screen and (max-width: 480px) {
   #product .post-entry .post > a img {
@@ -387,7 +369,6 @@ footer .social {
   background-color: #fff;
   background-image: none;
   border: 2px solid #ccc;
-  /*border-radius: 4px;*/
   box-shadow: none;
 }
 .form-control:focus, .form-control:active {
@@ -428,7 +409,6 @@ footer .social {
 .btn.btn-primary {
   background: #eff4fb;
   color: #212a4c;
-  /*border: none !important;*/
   border: 1px solid #212a4c !important;
 }
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
@@ -489,24 +469,11 @@ footer .social {
 
 /*# sourceMappingURL=style.css.map */
 
-/*search*/
+/*search bar*/
 .form-wrapper {
-  /*background-color: #f6f6f6;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
-  background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: -moz-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: -ms-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: -o-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: linear-gradient(top, #f6f6f6, #eae8e8);*/
   border-color: #dedede #bababa #aaa #bababa;
   border-style: solid;
   border-width: 1px;
-  /*-webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;*/
-  /*-webkit-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-  -moz-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-  box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;*/
   overflow: hidden;
   width: 100%;
   height: 1.5em;
@@ -514,12 +481,6 @@ footer .social {
 
 .form-wrapper #search {
   border: 1px solid #CCC;
-  /*-webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  -moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;*/
   color: #999;
   float: left;
   font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
@@ -541,21 +502,12 @@ footer .social {
 .form-wrapper #submit,
 .form-wrapper #locaMe{
   background-color: #eff4fb;
-  /*border: 1px solid #00748f;*/
-  /*-moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;*/
-  /*-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;*/
   color: #212a4c;
   cursor: pointer;
   height: 100%;
   float: right;
-  /*font: 15px Arial, Helvetica;*/
   padding: 0;
   text-transform: uppercase;
-  /*text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);*/
   width: 5%;
 }
 
@@ -581,8 +533,8 @@ footer .social {
 
 /*css for info box*/
 
+/*side info box to display risk in index page*/
 #infoBox {
- /* width: 100%;*/
   box-sizing: content-box;
   overflow: hidden;
   visibility: hidden;
@@ -592,17 +544,20 @@ footer .social {
   text-align: center;
 }
 
+/*location division*/
 .location {
   padding-top: 10%;
   font-size: xx-large;
   font-weight: bold;
 }
 
+/*date division*/
 .date {
   font-size: medium;
   margin-bottom: 30%;
 }
 
+/*center circle element*/
 .circle {
   border-radius: 50%;
   height: 220px;
@@ -612,6 +567,7 @@ footer .social {
   vertical-align: middle;
 }
 
+/*infobox desc division*/
 .desc {
   margin-top: 20%;
   font-weight: 400;
@@ -619,6 +575,8 @@ footer .social {
   background-color: #212a4c;
 }
 
+
+/*set a different style in smaller window smaller circle, and smaller margin between division*/
 @media screen and (max-width: 991px) {
   .location {
     padding-top: 10%;
@@ -649,7 +607,7 @@ footer .social {
 }
 
 
-
+/*risk rate*/
 #riskRate {
   margin-bottom: 0%;
   font-size: xx-large;
@@ -657,6 +615,7 @@ footer .social {
   color: black;
 }
 
+/*customize infowindow*/
 .gm-style-iw {
   max-width: 150px !important;
   height: 110px !important;
@@ -664,7 +623,6 @@ footer .social {
   left: 15px !important;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-  /*//border: 3px solid rgba(72, 181, 233, 0.6);*/
   border-radius: 2px 2px 0 0;
 }
 
@@ -748,8 +706,9 @@ footer .social {
 }
 
 .navLogo {
-  width: 30px;
-  height: 30px;
+  width: 138px;
+  height: 35px;
+  margin-left: 7%;
 }
 
 .footerColor {
@@ -774,10 +733,10 @@ footer a, footer a:hover, footer a:focus {
 }
 
 .checkboxBG {
-  height: 200px;
+  height: 150px;
   background-color: #254f90;
   color: white;
-  padding-top: 50px;
+  padding-top: 10px;
   margin: 15px;
   padding-left: 10px;
 }
@@ -799,6 +758,11 @@ footer a, footer a:hover, footer a:focus {
   margin-top: 50px;
   margin-bottom: 50px;
   border: 1px gray;
+}
+
+.searchicon {
+  height: 100%;
+  width: 100%;
 }
 
 
