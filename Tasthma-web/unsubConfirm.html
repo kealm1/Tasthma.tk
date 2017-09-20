@@ -13,7 +13,6 @@
     <meta name="keywords" content="risk,thunderstorm asthma,alert" />
     <meta name="author" content="iris" />
 
-
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
 
@@ -40,67 +39,34 @@
 <body>
 <div class="box-wrap">
     <header role="banner" id="fh5co-header">
-        <div class="headerBanner">
-            ARE YOU THUNDERSTORM ASTHMA READY? <a class="headerBanner bannerLink" href="prep.html">PREPARE & BE READY</a>
+        <div class="headerBanner" style="height: 50px">
         </div>
         <div class="container">
             <nav class="navbar navbar-default">
                 <div class="row">
                     <div class="col-md-3">
                         <div class="fh5co-navbar-brand">
-                            <a class="fh5co-logo" href="index.html"><img class="navLogo" src="images/7.png" alt="team iris" ></a>
+                            <a class="fh5co-logo" href="index.html"><img class="navLogo" src="images/7.png" alt="team iris"></a>
                         </div>
-                    </div>
-                    <div class="col-md-9">
-                        <ul class="nav text-left">
-                            <li><a href="index.html"><span>RISK</span></a></li>
-                            <li><a href="background.html">BACKGROUND</a></li>
-                            <li><a href="prep.html">PREPARE</a></li>
-                            <li><a href="subscribe.html">SUBSCRIBE</a></li>
-                            <li><a href="Aboutus.html">ABOUT US</a></li>
-                        </ul>
                     </div>
                 </div>
             </nav>
         </div>
     </header>
     <!-- END: header -->
-    <div class="container">
-        <div id="upHead" class="contentTitle">Update your preferences</div></p>
+    <section id="intro">
+        <div class="container">
 
-        <div class="col-md-10 col-md-offset-1 animate-box">
-            <form onsubmit="return false">
-                <div class="row">
-                    <div class="col-md-6 field eleMargin">
-                        <input type="text" name="uPhone" id="uPhone" class="form-control" placeholder="Your mobile number" required pattern="^04[0-9]{8}$">
-                    </div>
-                </div>
+            <div id="unsCHead" class="contentTitle">Unsubscription confirmed</div>
 
-                Receive an SMS alert if the risk level changes to High or Extreme:
 
-                <div class="form-group row">
-                    <div class="col-md-5 field checkboxBG">
-                        <input type="checkbox" name="upService" id="uDaily" value="uMC">
-                        <label for="uDaily">At your location.</label>
-                        <div id="uPcBox" class="pcArea">
-                            <input type="text" name="uPC" id="uPostcode" class="form-control" placeholder="Please enter a postcode">
-                        </div>
-                    </div>
-                    <div class="col-md-5 field checkboxBG">
-                        <input type="checkbox" name="upService" id="uArea" value="uAC">
-                        <label for="uArea">Across any location/s in the Greater Melbourne region. </label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <div class="col-md-6 field">
-                        <input type="submit" id="update" class="btn btn-primary eleMargin" value="update" onclick="updatePreference()">
-                    </div>
-                </div>
-            </form>
-            To unsubscribe, please <a href="unsub.html" style="text-decoration: none">click here</a>
+            <p>
+                You have successfully unsubscribed. You will no longer receive SMS alerts from us.
+            </p>
         </div>
-    </div>
+    </section>
+    </section>
+
 
     <footer id="footer" role="contentinfo">
         <div class="container">
@@ -128,8 +94,6 @@
 
 <!-- Main JS (Do not remove) -->
 <script src="js/main.js"></script>
-
-<script src="js/updateLogic.js"></script>
 
 </body>
 </html>

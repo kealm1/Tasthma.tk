@@ -22,24 +22,9 @@ body {
   font-weight: 300;
 }
 
-a {
-  /*color: #52d3aa;*/
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
-}
-a:hover {
-  text-decoration: underline !important;
-  /*color: #52d3aa !important;*/
-  color: white !important;
-}
-a:focus, a:active {
-  outline: none;
-}
-
 p {
   margin-bottom: 1.5em;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 300;
   font-family: lato, Arial, sans-serif;
 }
@@ -53,17 +38,17 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-selection {
   color: #fcfcfc;
-  background: #52d3aa;
+  background: #212a4c;
 }
 
 ::-moz-selection {
   color: #fcfcfc;
-  background: #52d3aa;
+  background: #212a4c;
 }
 
 ::selection {
   color: #fcfcfc;
-  background: #52d3aa;
+  background: #212a4c;
 }
 
 .box-wrap {
@@ -147,7 +132,8 @@ h1, h2, h3, h4, h5, h6 {
 #fh5co-header .nav li.active a {
   color: #000;
   background: transparent;
-  border-bottom: 2px solid #52d3aa;
+  margin-top: -2px;
+  border-bottom: 2px solid gray;
 }
 @media screen and (max-width: 992px) {
   #fh5co-header .nav li.active a {
@@ -157,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 480px) {
   #fh5co-header .nav li.active a {
     border-bottom: 2px solid transparent;
-    color: #52d3aa;
+    color: gray;
   }
 }
 @media screen and (max-width: 992px) {
@@ -167,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #intro, #work, #product, #about, #services {
-  padding-bottom: 5em;
+  padding-bottom: 1em;
 }
 @media screen and (max-width: 768px) {
   #intro, #work, #product, #about, #services {
@@ -206,16 +192,18 @@ h1, h2, h3, h4, h5, h6 {
 #services .service h2 {
   font-size: 22px;
   margin-bottom: 10px;
+  color:#212a4c;
 }
 #services .service .service-icon {
   margin-bottom: 30px;
 }
 #services .service .service-icon i {
   font-size: 40px;
-  color: #52d3aa;
+  color: #212a4c;
 }
 #services .service p {
   font-size: 18px;
+  color: #212a4c;
 }
 
 #work .fh5co-grid {
@@ -240,7 +228,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #work .fh5co-grid .image-popup .work-title {
   position: absolute;
-  top: 10%;
+  top: 40%;
   bottom: 10px;
   left: 10px;
   right: 10px;
@@ -273,10 +261,6 @@ h1, h2, h3, h4, h5, h6 {
 #product .post-entry .post > a img {
   max-width: 200px;
   max-height: 191px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
 }
 @media screen and (max-width: 480px) {
   #product .post-entry .post > a img {
@@ -322,19 +306,18 @@ footer p {
   line-height: 1;
 }
 footer .border {
-  border-top: 1px solid #e6e6e6;
-  padding: 2em 0;
+  padding: 20px 20px;
   float: left;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
   footer .border {
-    padding: 2em 15px !important;
+    padding: 20px 20px !important;
   }
 }
 @media screen and (max-width: 480px) {
   footer .border {
-    padding: 2em 15px !important;
+    padding: 20px 20px !important;
     padding-bottom: 2em !important;
   }
 }
@@ -379,20 +362,18 @@ footer .social {
 .form-control {
   display: block;
   width: 100%;
-  height: 57px;
+  height: 40px;
   padding: 10px 20px;
-  font-size: 20px;
   line-height: 1.42857;
   color: #555555;
   background-color: #fff;
   background-image: none;
   border: 2px solid #ccc;
-  border-radius: 4px;
   box-shadow: none;
 }
 .form-control:focus, .form-control:active {
   box-shadow: none;
-  border: 2px solid #52d3aa;
+  border: 2px solid #212a4c;
 }
 
 #submit {
@@ -426,14 +407,13 @@ footer .social {
   transition: 0.3s;
 }
 .btn.btn-primary {
-  background: #52d3aa;
-  color: #fff;
-  border: none !important;
-  border: 2px solid transparent !important;
+  background: #eff4fb;
+  color: #212a4c;
+  border: 1px solid #212a4c !important;
 }
 .btn.btn-primary:hover, .btn.btn-primary:active, .btn.btn-primary:focus {
   box-shadow: none;
-  background: #52d3aa;
+  background: #212a4c;
 }
 .btn:hover, .btn:active, .btn:focus {
   background: #393e46 !important;
@@ -470,7 +450,7 @@ footer .social {
   transition: 0.5s;
 }
 .social li a:hover, .social li a:focus {
-  color: #52d3aa;
+  color: #212a4c;
   text-decoration: none;
 }
 .social li a i {
@@ -489,24 +469,11 @@ footer .social {
 
 /*# sourceMappingURL=style.css.map */
 
-/*search*/
+/*search bar*/
 .form-wrapper {
-  /*background-color: #f6f6f6;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eae8e8));
-  background-image: -webkit-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: -moz-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: -ms-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: -o-linear-gradient(top, #f6f6f6, #eae8e8);
-  background-image: linear-gradient(top, #f6f6f6, #eae8e8);*/
   border-color: #dedede #bababa #aaa #bababa;
   border-style: solid;
   border-width: 1px;
-  /*-webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;*/
-  /*-webkit-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-  -moz-box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;
-  box-shadow: 0 3px 3px rgba(255,255,255,.1), 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 5px #444;*/
   overflow: hidden;
   width: 100%;
   height: 1.5em;
@@ -514,12 +481,6 @@ footer .social {
 
 .form-wrapper #search {
   border: 1px solid #CCC;
-  /*-webkit-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  -moz-box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  box-shadow: 0 1px 1px #ddd inset, 0 1px 0 #FFF;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;*/
   color: #999;
   float: left;
   font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
@@ -541,21 +502,12 @@ footer .social {
 .form-wrapper #submit,
 .form-wrapper #locaMe{
   background-color: #eff4fb;
-  /*border: 1px solid #00748f;*/
-  /*-moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;*/
-  /*-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #FFF;*/
   color: #212a4c;
   cursor: pointer;
   height: 100%;
   float: right;
-  /*font: 15px Arial, Helvetica;*/
   padding: 0;
   text-transform: uppercase;
-  /*text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);*/
   width: 5%;
 }
 
@@ -581,8 +533,8 @@ footer .social {
 
 /*css for info box*/
 
+/*side info box to display risk in index page*/
 #infoBox {
- /* width: 100%;*/
   box-sizing: content-box;
   overflow: hidden;
   visibility: hidden;
@@ -592,17 +544,20 @@ footer .social {
   text-align: center;
 }
 
+/*location division*/
 .location {
   padding-top: 10%;
   font-size: xx-large;
   font-weight: bold;
 }
 
+/*date division*/
 .date {
   font-size: medium;
   margin-bottom: 30%;
 }
 
+/*center circle element*/
 .circle {
   border-radius: 50%;
   height: 220px;
@@ -612,6 +567,7 @@ footer .social {
   vertical-align: middle;
 }
 
+/*infobox desc division*/
 .desc {
   margin-top: 20%;
   font-weight: 400;
@@ -619,6 +575,8 @@ footer .social {
   background-color: #212a4c;
 }
 
+
+/*set a different style in smaller window smaller circle, and smaller margin between division*/
 @media screen and (max-width: 991px) {
   .location {
     padding-top: 10%;
@@ -649,7 +607,7 @@ footer .social {
 }
 
 
-
+/*risk rate*/
 #riskRate {
   margin-bottom: 0%;
   font-size: xx-large;
@@ -657,6 +615,7 @@ footer .social {
   color: black;
 }
 
+/*customize infowindow*/
 .gm-style-iw {
   max-width: 150px !important;
   height: 110px !important;
@@ -664,7 +623,6 @@ footer .social {
   left: 15px !important;
   background-color: #fff;
   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
-  /*//border: 3px solid rgba(72, 181, 233, 0.6);*/
   border-radius: 2px 2px 0 0;
 }
 
@@ -685,6 +643,11 @@ footer .social {
 
 .bannerLink {
   text-decoration: underline !important;
+}
+
+.bannerLink:hover, .bannerLink:focus {
+  color: white !important;
+  cursor: pointer;
 }
 
 .prepareBox {
@@ -743,8 +706,9 @@ footer .social {
 }
 
 .navLogo {
-  width: 30px;
-  height: 30px;
+  width: 138px;
+  height: 35px;
+  margin-left: 7%;
 }
 
 .footerColor {
@@ -754,9 +718,51 @@ footer .social {
 .contentTitle {
   background-color: #212a4c;
   color: white;
+  padding: 10px 10px 10px;
 }
 
 .heatTitle {
   background-color: #eff4fb;
-  font-size: medium;
+  font-size: 13px;
 }
+
+footer a, footer a:hover, footer a:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.checkboxBG {
+  height: 150px;
+  background-color: #254f90;
+  color: white;
+  padding-top: 10px;
+  margin: 15px;
+  padding-left: 10px;
+}
+
+.pcArea {
+  margin-top: 15px;
+  width: 65%;
+}
+.eleMargin {
+  margin: 15px;
+}
+
+.statusBar {
+  background-color: #4d4d4d;
+  color: white;
+  padding: 10px 10px 10px;
+  font-size: medium;
+  font-weight: 100;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 1px gray;
+}
+
+.searchicon {
+  height: 100%;
+  width: 100%;
+}
+
+
