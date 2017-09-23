@@ -37,7 +37,7 @@ function calculateScore($lat,$lon,$pm10data) {
     return getWindSpeedScore($weatherParam[0]) +
         getWeatherConditionScore($weatherParam[1]) +
         getGrasslandScore($lat,$lon) +
-        getPM10Score(getPM10Measure($lat,$lon,$pm10data)) + getSeasonScore(); //wind + pm10 + condition + grassland + season
+        getPM10Score(getPM10Measure($lat,$lon,json_decode($pm10data))) + getSeasonScore(); //wind + pm10 + condition + grassland + season
 }
 
 //helper function, get rating based on socre
@@ -130,7 +130,7 @@ function getPM10Score($measure) {
         return 3;
     } else if ($measure >= 50 && $measure < 75) {
         return 2;
-    } else if ($measure >=33 &7 && $measure < 50) {
+    } else if ($measure >=33 && $measure < 50) {
         return 1;
     } else {
         return 0;
