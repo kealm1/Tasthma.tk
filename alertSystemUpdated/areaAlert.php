@@ -10,7 +10,7 @@ require_once 'algorithm.php'; //calculate risk score
 require_once 'sendSMS.php'; //sms service
 require_once 'pm10Request.php'; //get processed pm10 measures from EPA API
 
-$measures = processResponse(getAPIResponse(getTime())); //get pm10 measures with site location
+$measures = processResponse(getAPIResponse(getTime())); //get pm10 measures with site 
 
 $result = $db->query('SELECT * FROM suburbs'); //get all list that need to be checked
 
@@ -21,8 +21,7 @@ while($row = mysqli_fetch_assoc($result))
 $processedData = array(); //store location that has high risk
 
 foreach ($rawData as $location) { //calculate risk score for each location, if > 4(high) store to processedData
-    $score = calculateScore($location['lat'],$location['lon'], $GLOBALS['measures']);
-    echo $score . ' ';
+    $score = calculateScore($location['lat'],$location['lon'], $measures);
     if($score > 4) {
         array_push($processedData, array('postcode'=>$location['postcode'], 'score'=> $score));
     }
