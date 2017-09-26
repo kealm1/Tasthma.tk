@@ -1605,6 +1605,7 @@ mark,
 
 .text-left {
   text-align: left;
+  margin-left: 18px;
 }
 
 .text-right {

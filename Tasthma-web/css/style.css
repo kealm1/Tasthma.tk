@@ -64,8 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media screen and (max-width: 992px) {
   #fh5co-header {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    padding-bottom: 80px;
+    padding-bottom: 10px;
   }
 }
 #fh5co-header .navbar-default {
@@ -126,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media screen and (max-width: 480px) {
   #fh5co-header .nav li a {
-    padding: 10px 0;
+    padding: 5px 0;
   }
 }
 #fh5co-header .nav li.active a {
@@ -144,11 +143,6 @@ h1, h2, h3, h4, h5, h6 {
   #fh5co-header .nav li.active a {
     border-bottom: 2px solid transparent;
     color: gray;
-  }
-}
-@media screen and (max-width: 992px) {
-  #fh5co-header .nav {
-    margin-bottom: 40px;
   }
 }
 
@@ -327,7 +321,7 @@ footer p {
 footer small {
   text-transform: uppercase;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 10px;
   letter-spacing: .01em;
   font-family: lato, Arial, sans-serif;
 }
@@ -579,26 +573,26 @@ footer .social {
 /*set a different style in smaller window smaller circle, and smaller margin between division*/
 @media screen and (max-width: 991px) {
   .location {
-    padding-top: 10%;
+    padding-top: 5%;
     font-size: xx-large;
     font-weight: bold;
   }
 
   .date {
     font-size: medium;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
   }
 
   .circle {
     border-radius: 50%;
-    height: 150px;
-    width: 150px;
+    height: 180px;
+    width: 180px;
     display: table-cell;
     vertical-align: middle;
   }
 
   .desc {
-    margin-top: 8%;
+    margin-top: 5%;
     font-weight: 400;
     color: white;
     background-color: #212a4c;
@@ -762,6 +756,19 @@ footer a, footer a:hover, footer a:focus {
 .searchicon {
   height: 100%;
   width: 100%;
+}
+
+
+
+.loading {
+  height: 50px;
+  width: 50px;
+  visibility: hidden;
+}
+
+.searchBarLoading {
+  background: url(../images/loading.gif) no-repeat right center;
+  background-size: 25px 25px;
 }
 
 
