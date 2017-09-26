@@ -80,6 +80,7 @@ function insertData() { //pass data to server-side script for processing, if all
         return;
     }
     if (postcode.valid && phoneNumber.valid) {
+        document.getElementById('loadingIcon').style.visibility = 'visible';
         var subType = getServicesType();
         var pCode = 0000;
         if (subType != 2) {
@@ -95,9 +96,11 @@ function insertData() { //pass data to server-side script for processing, if all
                 window.location.href='subConfirm.html'
             } else {
                 alert((res.msg));
+                document.getElementById('loadingIcon').style.visibility = 'hidden';
             };
         }).fail(function () {
             alert('Oops! Something went wrong when storing your data. Please try again.');
+            document.getElementById('loadingIcon').style.visibility = 'hidden';
         });
     }
 }

@@ -89,6 +89,7 @@ function updatePreference() { //validate all data, and pass to server via ajax p
     }
 
     if (newPostcode.valid && newPhoneNumber.valid) {
+        document.getElementById('loadIcon').style.visibility = 'visible';
         var subType = getUpdatedPreference();
         var pCode = 0000;
         if (subType == 1 || subType == 3) {
@@ -104,9 +105,11 @@ function updatePreference() { //validate all data, and pass to server via ajax p
                 window.location.href='updateConfirm.html';
             } else {
                 alert((res.msg));
+                document.getElementById('loadIcon').style.visibility = 'hidden';
             };
         }).fail(function () {
             alert('call failed');
+            document.getElementById('loadIcon').style.visibility = 'hidden';
         });
     }
 }
