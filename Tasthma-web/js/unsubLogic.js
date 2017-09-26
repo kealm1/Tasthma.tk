@@ -15,6 +15,7 @@ ph.addEventListener("input", function (event) { //validate phone number
 
 function deleteRecord() { //pass number to php script via ajax post for deleting record
     if (ph.valid) {
+        document.getElementById('loadinIcon').style.visibility = 'visible';
         $.ajax({
             url: 'scripts/dbController.php',
             type: 'POST',
@@ -25,9 +26,11 @@ function deleteRecord() { //pass number to php script via ajax post for deleting
                 window.location.href='unsubConfirm.html'
             } else {
                 alert((res.msg)); //one common error would be the number user want to unsub is not actually in database
+                document.getElementById('loadinIcon').style.visibility = 'hidden';
             };
         }).fail(function () {
             alert('Oops! Something went wrong when deleting your data. Please try again.');
+            document.getElementById('loadinIcon').style.visibility = 'hidden';
         });
     }
 }

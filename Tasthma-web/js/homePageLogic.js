@@ -122,8 +122,6 @@ var grasslands = [
 //bias the search to VIC
 var searchBound;
 
-//places service for manual text search
-var searchService;
 
 //get location name by coordinates
 var geoCodingService;
@@ -209,15 +207,15 @@ function initialize() {
     }
     autoCom = new google.maps.places.Autocomplete(input, option);
 
-    searchService = new google.maps.places.PlacesService(map); //init manual search service
     geoCodingService = new google.maps.Geocoder; //initialise geocoding
 
     //perform auto search function, results automatically show if choose suggested location, or hit enter to do the search
    autoCom.addListener('place_changed', function() {
         placeSearched = autoCom.getPlace();
         if (!placeSearched || !placeSearched.geometry) {
-            manualLookUp(); //if it's not a valid place object, perform a places textSearch to find location
+            manualLookUp(); //if it's not a valid place object, perform a geocoding search to find location
         } else { //get risk info and display to website
+            $('#search').addClass('searchBarLoading');
             locationInfoByCoords(placeSearched.geometry.location.lat(), placeSearched.geometry.location.lng());
         }
     });
@@ -227,7 +225,7 @@ function initialize() {
         url: 'scripts/pm10Request.php',
         type: 'GET'
     }).done(function(res) {
-        pm10Measures =  res;
+            pm10Measures = res;
     }).fail(function() {
         alert('Oops, Something wrong at the back');
         pm10Measures = '[]';
@@ -332,15 +330,18 @@ function convertToGeoJson(data) {
 
 //perform places text search to find location
 function manualLookUp() {
+    $('#search').addClass('searchBarLoading');
     var text = input.value;
     if (text == null || text.trim().length == 0) {
         alert('Oops! please type in your address, or postcode, or places')
     } else {
         var req = {
-           bounds: searchBound,
-            query: text
+            bounds: searchBound,
+            address: text,
+            componentRestrictions: {country: 'AU',administrativeArea: 'VIC'}
+
         }
-        searchService.textSearch(req, callback);
+        geoCodingService.geocode(req, callback);
     }
 }
 
@@ -348,10 +349,12 @@ function manualLookUp() {
 function callback(results,status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
         var priRes = results[0];
-        locationInfoByCoords(priRes.geometry.location.lat(), priRes.geometry.location.lng());
+        processPlaceObject(priRes);
     } else {
         alert('Oops! we cannot find the location, please try something else');
+        $('#search').removeClass('searchBarLoading');
     }
+
 }
 
 function processPlaceObject(place) {
@@ -359,9 +362,15 @@ function processPlaceObject(place) {
     var lon = place.geometry.location.lng();
     var components = place.address_components;
     var name = getLocationNameFromResponse(components);
+    if (name === 'nothing') {
+        alert('Oops! we cannot find the location, please try something else.');
+        $('#search').removeClass('searchBarLoading');
+        return;
+    }
     var postcode = getPostCodeFromResponse(components);
     if (!validatePostcode(postcode)) {
         alert('Oops! The place you\'re looking for is not covered yet.');
+        $('#search').removeClass('searchBarLoading');
         return;
     } else {
         getCurrentInfo(name,lat,lon);
@@ -371,15 +380,18 @@ function processPlaceObject(place) {
 //find suburbs using google geocoding and process and display to get risk info
 function locationInfoByCoords(lat,lon) {
     var coords= {lat: lat, lng: lon};
+
     geoCodingService.geocode({'location': coords, 'bounds': searchBound}, function(results, status) {
         if (status === 'OK') {
             if (results[0]) {
                 processPlaceObject(results[0]);
             } else {
                 window.alert('Oops! Cannot find your location name!');
+                $('#search').removeClass('searchBarLoading');
             }
         } else {
             window.alert('Oops! Finding your area name failed due to: ' + status);
+            $('#search').removeClass('searchBarLoading');
         }
     });
 }
@@ -404,7 +416,7 @@ function getPostCodeFromResponse(components) {
     for (var i = 0; i < components.length; i++) {
         if (components[i].types[0] = 'postal_code') {
             code = components[i].long_name;
-            if (!isNaN(code) && code.length == 4) {
+            if (!isNaN(code) && code.length == 4 && code.startsWith('3')) {
                break;
             }
         }
@@ -460,6 +472,7 @@ function getCurrentInfo(name, lat, lon) {
         marker.addListener('click', function() {
             markerInfoWindow(name, res.main.temp, res.weather[0].main, riskScore);
         });
+        $('#search').removeClass('searchBarLoading');
     };
     req.send();
 }
@@ -489,6 +502,7 @@ function createWeatherReq(lat, lon) {
 
 //find users current location
 function locateMe() {
+    $('#search').addClass('searchBarLoading');
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
@@ -496,9 +510,11 @@ function locateMe() {
             locationInfoByCoords(lat, lon);
         }, function() {
             alert('Oop! The service has failed.');
+            $('#search').removeClass('searchBarLoading');
         });
     } else {
-        alert('Oops! Looks like your browser doesn\'t support this function. ');
+        alert('Oops! Looks like your browser doesn\'t support this function.');
+        $('#search').removeClass('searchBarLoading');
     }
 }
 
@@ -661,19 +677,19 @@ function getRiskRating(score) {
     var res = {};
     if (score >= 8) {
         res['rating'] = 'EXTREME';
-        res ['desc'] = 'You need to prepare for a potential Thunderstorm Asthma outbreak.';
+        res ['desc'] = 'It is advisable to remain indoors and take preventative medication';
         res ['colour'] = '#ff3333';
     } else if (score >= 5 && score < 8) {
         res['rating'] = 'HIGH';
-        res ['desc'] = 'You can chill at home.';
+        res ['desc'] = 'It is advisable to avoid wind gusts and carry preventative medication.';
         res['colour'] = '#ff9933'
     } else if (score >= 3 && score < 5) {
         res['rating'] = 'MEDIUM';
-        res ['desc'] = 'You can go outside but remember to take your pills.';
+        res ['desc'] = 'You may need hay fever medication.';
         res['colour'] = '#ffff66'
     } else if (score >= 0 && score < 3) {
         res['rating'] = 'LOW';
-        res ['desc'] = 'You can go outside to get your tan.';
+        res ['desc'] = 'You may safely enjoy being outdoors.';
         res['colour'] = '#00cc66'
     } else {
         res['rating'] = 'Error';
