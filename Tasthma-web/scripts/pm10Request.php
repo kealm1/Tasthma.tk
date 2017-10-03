@@ -8,7 +8,7 @@
  *
  * return formated response to website
  */
-
+error_reporting(0);
 //get current time in AUS timezone
 function getTime() {
     date_default_timezone_set('Australia/Melbourne');
