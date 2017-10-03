@@ -7,6 +7,7 @@ var ph = document.getElementById("unsubPhone"); //phone number input
 ph.addEventListener("input", function (event) { //validate phone number
     if (ph.validity.patternMismatch) {
         ph.setCustomValidity("Oops! Please enter a valid Australian mobile number (04xxxxxxxx).");
+        ph.valid = false;
     } else {
         ph.setCustomValidity("");
         ph.valid = true;

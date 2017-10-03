@@ -51,6 +51,7 @@ newPostcode.addEventListener("input", function (event) { //validate postcode
 newPhoneNumber.addEventListener("input", function (event) { //validate phone
     if (newPhoneNumber.validity.patternMismatch) {
         newPhoneNumber.setCustomValidity("Oops! Please type in a valid Oz mobile number (04xxxxxxxx).");
+        newPhoneNumber.valid = false;
     } else {
         newPhoneNumber.setCustomValidity("");
         newPhoneNumber.valid = true;
