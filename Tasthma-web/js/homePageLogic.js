@@ -333,7 +333,8 @@ function manualLookUp() {
     $('#search').addClass('searchBarLoading');
     var text = input.value;
     if (text == null || text.trim().length == 0) {
-        alert('Oops! please type in your address, or postcode, or places')
+        alert('Oops! please type in your address, or postcode, or places');
+        $('#search').removeClass('searchBarLoading');
     } else {
         var req = {
             bounds: searchBound,
@@ -351,7 +352,7 @@ function callback(results,status) {
         var priRes = results[0];
         processPlaceObject(priRes);
     } else {
-        alert('Oops! we cannot find the location, please try something else');
+        alert('Oops! we cannot find the location, please try something else.');
         $('#search').removeClass('searchBarLoading');
     }
 
@@ -369,7 +370,7 @@ function processPlaceObject(place) {
     }
     var postcode = getPostCodeFromResponse(components);
     if (!validatePostcode(postcode)) {
-        alert('Oops! The place you\'re looking for is not covered yet.');
+        alert('Oops! We couldn\'t find anything matching your search criteria within Greater Melbourne. Please change your search criteria or put more details.');
         $('#search').removeClass('searchBarLoading');
         return;
     } else {
@@ -677,15 +678,15 @@ function getRiskRating(score) {
     var res = {};
     if (score >= 8) {
         res['rating'] = 'EXTREME';
-        res ['desc'] = 'It is advisable to remain indoors and take preventative medication';
+        res ['desc'] = 'Remain indoors and take preventative medication.';
         res ['colour'] = '#ff3333';
     } else if (score >= 5 && score < 8) {
         res['rating'] = 'HIGH';
-        res ['desc'] = 'It is advisable to avoid wind gusts and carry preventative medication.';
+        res ['desc'] = 'Avoid wind gusts, stay indoors and carry preventative medication.';
         res['colour'] = '#ff9933'
     } else if (score >= 3 && score < 5) {
         res['rating'] = 'MEDIUM';
-        res ['desc'] = 'You may need hay fever medication.';
+        res ['desc'] = 'Take care when outdoors. You may need hay fever medication.';
         res['colour'] = '#ffff66'
     } else if (score >= 0 && score < 3) {
         res['rating'] = 'LOW';

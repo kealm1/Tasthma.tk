@@ -56,6 +56,7 @@ postcode.addEventListener("input", function (event) { //postcode validation
 phoneNumber.addEventListener("input", function (event) { //validation for phone number using regex
     if (phoneNumber.validity.patternMismatch) {
         phoneNumber.setCustomValidity("Oops! Please enter a valid Australian mobile number (04xxxxxxxx).");
+        phoneNumber.valid = false;
     } else {
         phoneNumber.setCustomValidity("");
         phoneNumber.valid = true;
