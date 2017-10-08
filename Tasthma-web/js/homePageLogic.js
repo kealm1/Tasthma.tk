@@ -260,7 +260,7 @@ function initialize() {
 
 /*This function rquest default locations weather info and process the results*/
 function displayDefault(){
-    var requestString = "https://api.openweathermap.org/data/2.5/group?id=2158177,2148876,2155718,2166370,7932638,2165171,2144095,2156878,2174360&units=metric"
+    var requestString = "https://api.openweathermap.org/data/2.5/group?id=2158177,2148876,2166370,7932638,2165171,2144095,2174360,2169455,2160188&units=metric"
         + "&APPID=" + openWeatherMapKey;
     request = new XMLHttpRequest();
     request.onload = processResults;

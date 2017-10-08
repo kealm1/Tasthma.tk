@@ -105,12 +105,12 @@ function updatePreference() { //validate all data, and pass to server via ajax p
             if (res.code != 0) {
                 window.location.href='updateConfirm.html';
             } else {
-                alert((res.msg));
                 document.getElementById('loadIcon').style.visibility = 'hidden';
+                alert((res.msg));
             };
         }).fail(function () {
-            alert('call failed');
             document.getElementById('loadIcon').style.visibility = 'hidden';
+            alert('call failed');
         });
     }
 }

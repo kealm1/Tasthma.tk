@@ -26,12 +26,12 @@ function deleteRecord() { //pass number to php script via ajax post for deleting
             if (res.code != 0) {
                 window.location.href='unsubConfirm.html'
             } else {
-                alert((res.msg)); //one common error would be the number user want to unsub is not actually in database
                 document.getElementById('loadinIcon').style.visibility = 'hidden';
+                alert((res.msg)); //one common error would be the number user want to unsub is not actually in database
             };
         }).fail(function () {
-            alert('Oops! Something went wrong when deleting your data. Please try again.');
             document.getElementById('loadinIcon').style.visibility = 'hidden';
+            alert('Oops! Something went wrong when deleting your data. Please try again.');
         });
     }
 }
