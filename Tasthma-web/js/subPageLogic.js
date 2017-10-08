@@ -96,12 +96,12 @@ function insertData() { //pass data to server-side script for processing, if all
             if (res.code != 0) {
                 window.location.href='subConfirm.html'
             } else {
-                alert((res.msg));
                 document.getElementById('loadingIcon').style.visibility = 'hidden';
+                alert((res.msg));
             };
         }).fail(function () {
-            alert('Oops! Something went wrong when storing your data. Please try again.');
             document.getElementById('loadingIcon').style.visibility = 'hidden';
+            alert('Oops! Something went wrong when storing your data. Please try again.');
         });
     }
 }
