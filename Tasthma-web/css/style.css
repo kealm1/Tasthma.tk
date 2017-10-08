@@ -771,4 +771,26 @@ footer a, footer a:hover, footer a:focus {
   background-size: 25px 25px;
 }
 
+.text404 {
+  padding-left: 10%;
+}
+
+.oops {
+  font-size: 500%;
+  margin-bottom: 0.1em;
+  color: #212a4c;
+  font-weight: 900;
+}
+
+.unable {
+  font-size: 130%;
+  margin-bottom: 0.1em;
+  color: #254f90;
+}
+
+.back {
+  font-size: 100%;
+  color: #4d4d4d;
+}
+
 
